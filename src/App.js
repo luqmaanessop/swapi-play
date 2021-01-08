@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import injectContext from "./js/store/appContext";
-import { BrowserRouter, Link, Switch, Route } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import People from "./js/component/people";
 import Planets from "./js/component/planets";
 import Vehicles from "./js/component/vehicles";
