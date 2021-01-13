@@ -6,7 +6,7 @@ import Pagination from './Pagination';
 const People = () => {
   const { store, actions } = useContext(Context);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerpage] = useState(perPage);
+  const [postsPerPage] = useState(perPage);
 
   // Get current people
   const indexOfLastPerson = currentPage * postsPerPage;
@@ -18,7 +18,7 @@ const People = () => {
 
 
   return (
-    <div className="text-center mt-5 table-wrapper">
+    <div className="ml-0 text-center mt-5 table-wrapper">
       <table className="table table-bordered mt-2 pt-5 fl-table">
         <thead className="thead-dark">
           <tr>

@@ -8,9 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       vehicles: []
     },
     actions: {
-      loadPeople() {
-        let url = endpoint + "/people";
-
+      callSwapi(url, frag) {
         fetch(url)
           .then(res => res.json())
           .then(result => {
@@ -24,8 +22,9 @@ const getState = ({ getStore, getActions, setStore }) => {
               .then(res => res.json())
               .then(result => {
                 storeHouse = storeHouse.concat(result.results);
+                console.log(storeHouse);
                 setStore({
-                  people: storeHouse
+                  [frag]: storeHouse
                 });
               })
               // Unset urlMod for next iteration
@@ -34,31 +33,23 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch(e => console.error(e));
       },
-      loadPlanets() {
-        const url = endpoint + "/planets";
+      loadPeople() {
+        let fragment = "people";
+        let url = endpoint + "/" + fragment;
 
-        fetch(url)
-          .then(res => res.json())
-          .then(result => {
-            // console.log("planets**** ", result);
-            setStore({
-              planets: result.results
-            });
-          })
-          .catch(e => console.error(e));
+        this.callSwapi(url, fragment);
+      },
+      loadPlanets() {
+        let fragment = "planets";
+        let url = endpoint + "/" + fragment;
+
+        this.callSwapi(url, fragment);
       },
       loadVehicles() {
-        const url = endpoint + "/vehicles";
+        let fragment = "vehicles";
+        let url = endpoint + "/" + fragment;
 
-        fetch(url)
-          .then(res => res.json())
-          .then(result => {
-            // console.log("vehicles*** ", result);
-            setStore({
-              vehicles: result.results
-            });
-          })
-          .catch(e => console.error(e));
+        this.callSwapi(url, fragment);
       }
     }
   };

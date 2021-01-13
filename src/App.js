@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="container m-auto">
       <div className="row justify-content-center">
-        <div className="col-md-8 grid gap-4 grid-cols-2">
-          <ul className="">
+        <div className="col-md-6">
+          <ul className="flex">
             <li className="bg-grey-100 hover:bg-grey-200 text-3xl mr-4 mt-4 mb-8"><Link className="px-4 py-4 w-full block" to="/">Home</Link></li>
             <li className="bg-blue-100 hover:bg-blue-200 text-3xl mr-4 mt-4 mb-8"><Link className="px-4 py-4 w-full block" to="/people">People</Link></li>
             <li className="bg-red-100 hover:bg-red-200 text-3xl mr-4 mt-4 mb-8"><Link className="px-4 py-4 w-full block" to="/planets">Planets</Link></li>
