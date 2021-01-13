@@ -1,3 +1,5 @@
+import { perPage } from '../../config';
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -12,10 +14,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(url)
           .then(res => res.json())
           .then(result => {
-            console.log("*********** ", result);
-            setStore({
-              people: result.results
-            });
+            var pages =  Math.ceil(result.count / perPage);
+            var storeHouse = result.results;
+
+            for (var i = 2; i <= pages; i++) {
+              fetch("https://swapi.dev/api/people/?page=" + i)
+              .then(res => res.json())
+              .then(result => {
+                storeHouse = storeHouse.concat(result.results)
+                setStore({
+                  people: storeHouse
+                });
+              })
+            }
           })
           .catch(e => console.error(e));
       },
