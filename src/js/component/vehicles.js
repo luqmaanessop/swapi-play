@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import { perPage } from '../../config';
 import Pagination from './Pagination';
@@ -21,7 +21,7 @@ const Vehicles = () => {
       <table className="table table-bordered mt-2 pt-5 fl-table">
         <thead className="thead-dark">
           <tr>
-            <th scope="col" colspan="2">Vehicles</th>
+            <th scope="col" colSpan="2">Vehicles</th>
           </tr>
         </thead>
         <tbody className="tbody-dark">

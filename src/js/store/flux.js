@@ -22,7 +22,6 @@ const getState = ({ getStore, getActions, setStore }) => {
               .then(res => res.json())
               .then(result => {
                 storeHouse = storeHouse.concat(result.results);
-                console.log(storeHouse);
                 setStore({
                   [frag]: storeHouse
                 });

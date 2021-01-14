@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import { perPage } from '../../config';
 import Pagination from './Pagination';
@@ -13,9 +13,8 @@ const People = () => {
   const indexOfFirstPerson = indexOfLastPerson - postsPerPage;
   const currentPerson = store.people.slice(indexOfFirstPerson, indexOfLastPerson);
 
-// change page
+  // change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
 
   return (
     <div className="ml-0 text-center mt-5 table-wrapper">
