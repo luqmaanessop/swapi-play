@@ -1,6 +1,6 @@
 import { perPage, endpoint } from '../../config';
 
-const getState = ({ getStore, getActions, setStore }) => {
+const getData = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       planets: [],
@@ -12,23 +12,35 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(url)
           .then(res => res.json())
           .then(result => {
+            var storeHouse = [];
             var pages =  Math.ceil(result.count / perPage);
-            var storeHouse = []
 
-            for (var i = 1; i <= pages; i++) {
-              let urlMod = i === 1 ? url : url + "?page=" + i;
+            async function fetchNextPages() {
+              for (var i = 1; i <= pages; i++) {
+                let urlMod = i === 1 ? url : url + "?page=" + i;
 
-              fetch(urlMod)
-              .then(res => res.json())
-              .then(result => {
-                storeHouse = storeHouse.concat(result.results);
-                setStore({
-                  [frag]: storeHouse
-                });
-              })
-              // Unset urlMod for next iteration
-              urlMod = "";
+                await fetch(urlMod)
+                .then(res => res.json())
+                .then(result => {
+                  storeHouse = storeHouse.concat(result.results);
+                  setStore({
+                    [frag]: storeHouse
+                  });
+                })
+                // Unset urlMod for next iteration
+                urlMod = "";
+              }
+
+              return storeHouse;
             }
+            // Wait for all fetch actions to finish then update store value
+            fetchNextPages().then(
+              function(value) {
+                setStore({
+                  [frag]: value
+                });
+              }
+            );
           })
           .catch(e => console.error(e));
       },
@@ -54,4 +66,4 @@ const getState = ({ getStore, getActions, setStore }) => {
   };
 };
 
-export default getState;
+export default getData;
