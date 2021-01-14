@@ -17,7 +17,7 @@ const Vehicles = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="ml-0 text-center mt-5 table-wrapper">
+    <div className="w-5/6 ml-0 text-center mt-5 table-wrapper">
       <table className="table table-bordered mt-2 pt-5 fl-table">
         <thead className="thead-dark">
           <tr>
@@ -27,8 +27,8 @@ const Vehicles = () => {
         <tbody className="tbody-dark">
           {currentVehicle.map((e, index) => (
             <tr key={index}>
-                <td>{e.name}</td>
-                <td>{e.vehicle_class}</td>
+                <td className="text-left">Name: {e.name}</td>
+                <td className="text-left">Vehicle type: {e.vehicle_class}</td>
             </tr>
           ))}
         </tbody>

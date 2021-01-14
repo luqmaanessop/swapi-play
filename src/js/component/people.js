@@ -17,7 +17,7 @@ const People = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="ml-0 text-center mt-5 table-wrapper">
+    <div className="ml-0 text-center mt-5 w-5/6 table-wrapper">
       <table className="table table-bordered mt-2 pt-5 fl-table">
         <thead className="thead-dark">
           <tr>
@@ -27,9 +27,9 @@ const People = () => {
         <tbody className="tbody-dark">
           {currentPerson.map((e, index) => (
             <tr key={index}>
-                <td className="font-bold text-left">{e.name}</td>
-                <td>Height: {e.height}cm</td>
-                <td>Skin colour: {e.skin_color}</td>
+                <td className="text-left">{e.name}</td>
+                <td className="text-left">Height: {e.height}cm</td>
+                <td className="text-left">Skin colour: {e.skin_color}</td>
             </tr>
           ))}
         </tbody>

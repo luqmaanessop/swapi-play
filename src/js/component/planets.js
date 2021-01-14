@@ -17,7 +17,7 @@ const Planets = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="ml-0 text-center mt-5 table-wrapper">
+    <div className="w-5/6 ml-0 text-center mt-5 table-wrapper">
       <table className="table table-bordered mt-2 pt-5 fl-table">
         <thead className="thead-dark">
           <tr>
@@ -28,9 +28,9 @@ const Planets = () => {
           {currentPlanet.map((e, index) => (
             <tr key={index}>
                 <td className="font-bold text-left">{e.name}</td>
-                <td>Terrain: {e.terrain}cm</td>
-                <td>Gravity: {e.gravity}</td>
-                <td>Population: {e.population}</td>
+                <td className="text-left">Terrain: {e.terrain}cm</td>
+                <td className="text-left">Gravity: {e.gravity}</td>
+                <td className="text-left">Population: {e.population}</td>
             </tr>
           ))}
         </tbody>
