@@ -33,7 +33,6 @@ code {
 }
 
 .fl-table td, .fl-table th {
-  text-align: center;
   padding: 8px;
 }
 
@@ -119,6 +118,5 @@ code {
   }
   .fl-table tbody td {
       display: block;
-      text-align: center;
   }
 }
